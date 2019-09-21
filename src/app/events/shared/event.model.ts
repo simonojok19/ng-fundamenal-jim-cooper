@@ -21,9 +21,5 @@ export interface Isession {
   duration: number;
   level: string;
   abstract: string;
-  voters: VList[];
-}
-
-export interface VList {
-  name: string;
+  voters: string[];
 }

@@ -4,9 +4,9 @@ import { IEvent } from './event.model';
 
 @Injectable()
 export class EventService {
-    getEvents(): Observable<IEvent> {
-        const subject = new Subject<IEvent>();
-        setTimeout(() => { subject.next(EVENTS); subject.complete(); }, 2000 );
+    getEvents(): Observable<IEvent[]> {
+        const subject = new Subject<IEvent[]>();
+        setTimeout(() => { subject.next(EVENTS); subject.complete(); }, 100 );
         return subject;
     }
 
