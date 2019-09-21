@@ -3,7 +3,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class EventService {
     getEvents() {
+        // tslint:disable-next-line: no-use-before-declare
         return EVENTS;
+    }
+
+    getEvent(id: number) {
+      // tslint:disable-next-line: no-use-before-declare
+      return EVENTS.find( event => event.id === id);
     }
 }
 
