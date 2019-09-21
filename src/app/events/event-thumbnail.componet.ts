@@ -4,7 +4,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   // tslint:disable-next-line: component-selector
   selector: 'event-thumbnail',
   template: `
-  <div class="well hoverwell thumbnail">
+  <div class="well hoverwell thumbnail" [routerLink]="['/events', event.id]">
     <h2>{{ event?.name }}</h2>
     <div>Date: {{ event?.date }}</div>
     <div [ngSwitch]="event?.time">
@@ -28,7 +28,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
     `
   ]
 })
-export class EventThumbailComponent {
+export class EventThumbnailComponent {
   @Input() event: any; // coming from another component
 
   getStartTimeClass() {

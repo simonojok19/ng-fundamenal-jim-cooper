@@ -4,7 +4,6 @@ import { ToastrService } from '../common/toastr.service';
 
 @Component({
   // tslint:disable-next-line: component-selector
-  selector: 'events-list',
   template: `
   <div>
   <h1>Upcoming Angular Events</h1>
@@ -18,11 +17,14 @@ import { ToastrService } from '../common/toastr.service';
   `,
 })
 export class EventsListComponent implements OnInit {
-  events: any[];
+  events: any;
   constructor(private eventService: EventService, private toastr: ToastrService) {}
 
   ngOnInit() {
-    this.events = this.eventService.getEvents();
+    this.eventService.getEvents().subscribe(
+      event => {this.events = event; },
+      error => {console.log('This is a error'); }
+    );
   }
 
   handleThumbnailClick(eventName) {

@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import {Subject} from 'rxjs';
 
 @Injectable()
 export class EventService {
     getEvents() {
-        // tslint:disable-next-line: no-use-before-declare
-        return EVENTS;
+        let subject = new Subject();
+        setTimeout(() => { subject.next(EVENTS); subject.complete(); }, 100 );
+        return subject;
     }
 
     getEvent(id: number) {
