@@ -8,7 +8,7 @@ import { IEvent } from './shared';
   <div class="well hoverwell thumbnail" [routerLink]="['/events', event.id]">
     <h2>{{ event?.name }}</h2>
     <div>Date: {{ event?.date }}</div>
-    <div [ngSwitch]="event?.time">
+    <div  [ngStyle]="getStartTimeStyle()" [ngSwitch]="event?.time">
       Time: {{ event?.time }}
       <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
       <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
@@ -25,7 +25,9 @@ import { IEvent } from './shared';
   </div>
   `,
   styles: [
-    ` .pad-left { margin-left: 10px;} .thumbnail { min-height: 210px;}
+    ` .pad-left { margin-left: 10px;}
+      .thumbnail { min-height: 210px;}
+      .well div {color: #bbb;}
     `
   ]
 })
