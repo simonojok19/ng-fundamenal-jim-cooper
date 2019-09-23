@@ -13,13 +13,14 @@ import {
   EventListResolver,
   CreateSessionComponent
 } from './events/index';
-import { EventsAppComponent } from './events-app.component'
-import { NavBarComponent } from './nav/nav-bar.component'
-import { ToastrService } from './common/toastr.service'
-import { appRoutes } from './routes'
-import { Error404Component } from './errors/404.component'
-import { AuthService } from './user/auth.service'
+import { EventsAppComponent } from './events-app.component';
+import { NavBarComponent } from './nav/nav-bar.component';
+import { ToastrService } from './common/toastr.service';
+import { appRoutes } from './routes';
+import { Error404Component } from './errors/404.component';
+import { AuthService } from './user/auth.service';
 import {SessionListComponent} from './events/event-details/session-list.component';
+import {CollapsibleWellComponent} from './common/collapsible-well.component';
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import {SessionListComponent} from './events/event-details/session-list.componen
     Error404Component,
     CreateSessionComponent,
     SessionListComponent,
+    CollapsibleWellComponent,
   ],
   providers: [
     EventService,
@@ -51,8 +53,9 @@ import {SessionListComponent} from './events/event-details/session-list.componen
 })
 export class AppModule {}
 
-export function checkDirtyState(component:CreateEventComponent) {
-  if (component.isDirty)
-    return window.confirm('You have not saved this event, do you really want to cancel?')
-  return true
+export function checkDirtyState(component: CreateEventComponent) {
+  if (component.isDirty) {
+    return window.confirm('You have not saved this event, do you really want to cancel?');
+  }
+  return true;
 }
