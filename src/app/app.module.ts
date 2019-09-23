@@ -12,13 +12,14 @@ import {
   EventRouteActivator,
   EventListResolver,
   CreateSessionComponent
-} from './events/index'
+} from './events/index';
 import { EventsAppComponent } from './events-app.component'
 import { NavBarComponent } from './nav/nav-bar.component'
 import { ToastrService } from './common/toastr.service'
 import { appRoutes } from './routes'
 import { Error404Component } from './errors/404.component'
 import { AuthService } from './user/auth.service'
+import {SessionListComponent} from './events/event-details/session-list.component';
 
 @NgModule({
   imports: [
@@ -35,18 +36,16 @@ import { AuthService } from './user/auth.service'
     NavBarComponent,
     CreateEventComponent,
     Error404Component,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent,
   ],
   providers: [
-    EventService, 
-    ToastrService, 
+    EventService,
+    ToastrService,
     EventRouteActivator,
     EventListResolver,
     AuthService,
-    { 
-      provide: 'canDeactivateCreateEvent', 
-      useValue: checkDirtyState 
-    }
+    {provide: 'canDeactivateCreateEvent', useValue: checkDirtyState}
   ],
   bootstrap: [EventsAppComponent]
 })
