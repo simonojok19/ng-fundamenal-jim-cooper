@@ -1,8 +1,8 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from './auth.service';
-import { Router} from '@angular/router';
-import {Toastr, TOASTR_TOKEN} from '../common/toastr.service';
+import { Component, OnInit, Inject } from '@angular/core'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { AuthService } from './auth.service'
+import { Router} from '@angular/router'
+import { TOASTR_TOKEN, Toastr } from '../common/toastr.service'
 
 @Component({
   templateUrl: './profile.component.html',
@@ -16,11 +16,13 @@ import {Toastr, TOASTR_TOKEN} from '../common/toastr.service';
   `]
 })
 export class ProfileComponent implements OnInit {
-  profileForm: FormGroup;
-  private firstName: FormControl;
-  private lastName: FormControl;
+  profileForm:FormGroup
+  private firstName:FormControl
+  private lastName:FormControl
 
-  constructor(private router: Router, private authService: AuthService, @Inject(TOASTR_TOKEN) private toastr: Toastr) {
+  constructor(private router:Router, 
+    private authService:AuthService,
+    @Inject(TOASTR_TOKEN) private toastr: Toastr) {
 
   }
 
@@ -31,25 +33,26 @@ export class ProfileComponent implements OnInit {
     this.profileForm = new FormGroup({
       firstName: this.firstName,
       lastName: this.lastName
-    });
+    })
   }
 
   saveProfile(formValues) {
     if (this.profileForm.valid) {
-      this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
-      this.toastr.success('Profile saved');
-      this.router.navigate(['events']);
+      this.authService.updateCurrentUser(formValues.firstName, formValues.lastName)
+      this.toastr.success('Profile Saved');
     }
   }
 
   validateFirstName() {
-    return this.firstName.valid || this.firstName.untouched;
+    return this.firstName.valid || this.firstName.untouched
   }
+  
   validateLastName() {
-    return this.lastName.valid || this.lastName.untouched;
+    return this.lastName.valid || this.lastName.untouched
   }
 
   cancel() {
-    this.router.navigate(['events']);
+    this.router.navigate(['events'])
   }
+       
 }
